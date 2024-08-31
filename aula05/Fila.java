@@ -4,50 +4,53 @@ public class Fila<T>{
     private String nomeFila;
 
     public Fila(){
-        this("Fila");
+        this("");
     }
 
     public Fila(String nomeFila){
+        this.nomeFila = nomeFila;
         this.primeiroNo = null;
         this.ultimoNo = null;
-        this.nomeFila = nomeFila;
     }
 
-    public void enfileirar(T dado){
+    public void enfileirar(T dado){ //enqueue, adiciona um elemento ao final da fila
         No<T> novoNo = new No<T>(dado);
         if(ultimoNo == null){
-            ultimoNo = primeiroNo = novoNo;
+            primeiroNo = ultimoNo = novoNo;
         }else{
             ultimoNo.setNextNo(novoNo);
             ultimoNo = novoNo;
         }
-    }    
+    }
 
-    public T desenfileirar(){
+    public T desenfileirar(){ //dequeue, remove o elemento no início da fila
         if(primeiroNo == null){
-            System.out.println("Fila vazia!");
+            System.out.println("Fila Vazia");
             return null;
         }
-
-        T dado = primeiroNo.getDado();
+        T dadoTemp = primeiroNo.getDado();
         primeiroNo = primeiroNo.getNextNo();
-
         if(primeiroNo == null){
             ultimoNo = null;
         }
-        return dado;
+        return dadoTemp;
     }
 
-    public void imprimeDados(){
+    public boolean isEmpty() { //verificar se a fila está vazia
+        return primeiroNo == null;
+    }
+
+    public void imprimeFila(){
         if(primeiroNo == null){
-            System.out.println("Fila vazia!");
+            System.out.println("Fila Vazia");
         }else{
-            System.out.printf("Dados da Fila %s: \n",nomeFila);
+            System.out.printf("Dados da fila %s:\n",nomeFila);
             No<T> aux = primeiroNo;
             while (aux != null) {
-                System.out.printf("- %s\n",aux.getDado());
+                System.out.printf("{ " + aux.getDado() +"} ");
                 aux = aux.getNextNo();
             }
+            System.out.println();
         }
     }
 
