@@ -1,16 +1,24 @@
 public class NoDuplo<T>{
 
     private T dado;
+    private int indice;
     private NoDuplo<T> proximoNo;
     private NoDuplo<T> anteriorNo;
 
-    public NoDuplo(T dado){
+    public NoDuplo(T dado, int indice){
         this.dado = dado;
+        this.indice = indice;
         this.proximoNo = null;
         this.anteriorNo = null;
     }
     
-    
+    public int getIndice() {
+        return indice;
+    }
+    public void setIndice(int indice) {
+        this.indice = indice;
+    }
+
     public NoDuplo<T> getAnteriorNo() {
         return anteriorNo;
     }
@@ -34,6 +42,6 @@ public class NoDuplo<T>{
 
     @Override
     public String toString(){
-        return "{ " + getDado() + " }";
+        return "{Índice: " + getIndice() + ", Dado: " + getDado() + "}";
     }
 }

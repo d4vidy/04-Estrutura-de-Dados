@@ -1,12 +1,18 @@
 public class Principal{
     public static void main(String[] args) {
         ListaDupla<String> lista = new ListaDupla<>("Alunos");
-        //lista.imprimeLista();
+        
+        lista.imprimeLista();
         lista.addInicio("David");
         lista.imprimeLista();
-        lista.addInicio("Deniel");
+        lista.addInicio("Luis");
+        lista.imprimeLista();
+        lista.addFinal("Deniel");
         lista.imprimeLista();
         lista.addFinal("Raiane");
         lista.imprimeLista();
+        
+        lista.removeInicio();
+        lista.removeFinal();
     }
 }
